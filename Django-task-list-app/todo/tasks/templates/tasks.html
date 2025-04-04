@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Task Manager</title>
+</head>
+<body class="flex items-center justify-center min-h-screen bg-gray-100">
+    <div class="bg-white shadow-lg rounded-xl p-6 w-96 text-center">
+        <h1 class="text-2xl font-bold text-blue-600">Tasks</h1>
+        
+        <form method="POST" action="/" class="mt-4">
+            {% csrf_token %}
+            <input type="text" name="title" placeholder="Enter task title" class="w-full p-2 border rounded-lg">
+            <button type="submit" class="w-full bg-blue-600 text-white py-2 mt-2 rounded-lg hover:bg-blue-700">Create Task</button>
+        </form>
+        
+        <div class="mt-6 text-left">
+            {% for task in tasks %}
+                <div class="p-3 bg-gray-200 rounded-lg mt-2">
+                    <p class="text-lg font-semibold text-gray-900">{{ task }}</p>
+                    <p class="text-sm {% if task.completed %}text-green-600{% else %}text-red-600{% endif %}">
+                        Task completed: {% if task.completed %}Yes{% else %}No{% endif %}
+                    </p>
+                    <div class="flex justify-between mt-2">
+                        <a href="{% url 'update-task' task.id %}" class="text-blue-500 hover:underline">Update</a>
+                        <a href="{% url 'delete-task' task.id %}" class="text-red-500 hover:underline">Delete</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

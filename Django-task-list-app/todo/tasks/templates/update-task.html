@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Update Task</title>
+</head>
+<body class="flex items-center justify-center min-h-screen bg-gray-100">
+    <div class="bg-white shadow-lg rounded-xl p-6 w-96 text-center">
+        <h1 class="text-2xl font-bold text-yellow-600">Update Task</h1>
+        
+        <form method="POST" action="" class="mt-4 space-y-4">
+            {% csrf_token %}
+            <div class="w-full p-2 border rounded-lg">{{ TaskForm }}</div>
+            <button type="submit" class="w-full bg-yellow-600 text-white py-2 rounded-lg hover:bg-yellow-700">
+                Update Task
+            </button>
+        </form>
+    </div>
+</body>
+</html>
