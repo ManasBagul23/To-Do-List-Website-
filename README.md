@@ -33,7 +33,7 @@ Steps
 
 Clone the repository:
 
-git clone https://github.com/yourusername/todo-list-django.git
+git clone https://github.com/ManasBagul23/To-Do-List-Website
 cd todo-list-django
 
 Create a virtual environment (optional but recommended):
